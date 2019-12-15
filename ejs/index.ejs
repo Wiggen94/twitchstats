@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <%- include('partials/head'); %>
+</head>
+<body>
+ <%- include('partials/menu'); %>
+
+ <div class="container-fluid bg-3 text-center"> 
+<h1> Hello </h2>
+	<form action="/search" method="POST">
+  Search user:
+  <br>
+  <input  type="text" name="search" placeholder="Search for a user">
+  <br>
+  <input type="submit" value="Submit">
+</form>
+  <h2><%= userName %></h2>
+  <img src="<%= userPic %>"/>
+  <p> Total views: <%= userViewcount %>
+</div>
+  </body>
+ <%- include('partials/script'); %>
+</html>
