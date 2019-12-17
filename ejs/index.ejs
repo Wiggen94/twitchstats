@@ -6,8 +6,8 @@
 <body>
  <%- include('partials/menu'); %>
 
- <div class="container-fluid bg-3 text-center"> 
-<h1> Hello </h2>
+ <div class="container h-100 justify-content-center align-items-center text-center"> 
+<h1> TwitchAnalytics </h1> </br>
 	<form action="/search" method="POST">
   Search user:
   <br>
@@ -17,8 +17,35 @@
 </form>
   <h2><%= userName %></h2>
   <img src="<%= userPic %>"/>
-  <p> Total views: <%= userViewcount %>
+  <p> Total views: <%= userViewcount %></p>
+  <p> Followers: <%= followerCount %></p>
+</p>
+  	<div class="chart-container row h-100 justify-content-center align-items-center" style="position: relative; height:20vh; width:40vw">
+  	<canvas id="myChart"></canvas>
+  	</div>
 </div>
   </body>
  <%- include('partials/script'); %>
+  	 <script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+        labels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep', 'Oct','Nov', 'Dec'],
+        datasets: [{
+            label: 'Follower gain',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            fill: false,
+            data: [<%= january %>, <%= february %>, <%= march %>, <%= april %>, <%= may %>, <%= june %>, <%= july %>, <%= august %>, <%= september %>, <%= october %>, <%= november %>, <%= december%>]
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+});
+</script>
 </html>
